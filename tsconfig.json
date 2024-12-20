@@ -8,15 +8,15 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "outDir": "dist",
-    "baseUrl": "./src", 
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "../*": ["*"]
     },
     "typeRoots": [
-      "./src/types", 
-      "./node_modules/@types"
+      "./node_modules/@types",
+      "./src/types"
     ]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*"]
+  "exclude": ["node_modules", "dist"]
 }

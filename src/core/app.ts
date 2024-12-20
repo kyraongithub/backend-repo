@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable node/no-path-concat */
 import flash from 'connect-flash'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -7,7 +5,7 @@ import 'dotenv/config'
 import express, { Application } from 'express'
 import session from 'express-session'
 import methodOverride from 'method-override'
-import { routes } from '@/routes'
+import { routes } from '../routes'
 
 import bodyParser from 'body-parser'
 import helmet from 'helmet'

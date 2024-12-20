@@ -1,7 +1,6 @@
 import * as admin from 'firebase-admin'
-// data is not fixed yet
-const serviceAccount = require('@/serviceAccountKey.json')
 
+const serviceAccount: any = require('./firebase.json')
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 })

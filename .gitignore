@@ -24,3 +24,4 @@ yarn-error.log*
 .env
 
 request.rest
+/src/config/firebase.json
