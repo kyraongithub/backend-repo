@@ -14,7 +14,6 @@ const FetchUserData = async (): Promise<User[] | null> => {
         id: doc.id,
         name: userData.name,
         email: userData.email,
-        username: userData.username,
         created_at: userData.created_at
       } as User)
     })
@@ -33,7 +32,6 @@ const CreateUserData = async (userData: User): Promise<User> => {
       id: userDoc.id,
       name: userData.name,
       email: userData.email,
-      username: userData.username,
       created_at: userData.created_at
     } as User
   } catch (error) {
@@ -51,7 +49,6 @@ const UpdateUserData = async (userId: string, updatedData: Partial<User>): Promi
       id: userId,
       name: updatedUserData.name,
       email: updatedUserData.email,
-      username: updatedUserData.username,
       created_at: updatedUserData.created_at
     } as User
   } catch (error) {

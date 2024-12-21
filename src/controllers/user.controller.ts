@@ -1,17 +1,16 @@
 import { Request, Response } from 'express'
 import { CreateUserData, DeleteUserData, FetchUserData, UpdateUserData } from '../repository/user.repository'
 import moment from 'moment'
-import { hashing } from '../utils/hashing'
 
-export const fetchUserData = async (req: Request, res: Response) => {
+export const fetchUsersData = async (req: Request, res: Response) => {
   try {
-    const user = await FetchUserData()
-    if (user) {
+    const users = await FetchUserData()
+    if (users) {
       return res.status(200).json({
         status: true,
         statusCode: 200,
-        message: 'User data fetched successfully!',
-        user
+        message: 'Users data fetched successfully!',
+        users
       })
     } else {
       return res.status(404).json({
@@ -32,7 +31,7 @@ export const fetchUserData = async (req: Request, res: Response) => {
 
 export const createUserData = async (req: Request, res: Response) => {
   try {
-    const userData = { ...req.body, password: hashing(req.body.password), created_at: moment(), updated_at: moment() }
+    const userData = { ...req.body, created_at: moment(), updated_at: moment() }
 
     const newUser = await CreateUserData(userData)
     return res.status(201).json({

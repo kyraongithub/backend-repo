@@ -10,13 +10,17 @@ const verifyToken = async (req: any, res: Response, next: NextFunction) => {
   }
 
   try {
-    const decodedToken = await auth.verifyIdToken(token)
+    const decodedToken = await auth.verifyIdToken(token, false)
     req.user = decodedToken
     next()
   } catch (error) {
     console.error('Error verifying token:', error)
-    return res.status(403).json({ status: false, statusCode: 403, message: 'Forbidden' })
+    return res.status(403).json({ status: false, statusCode: 403, message: `Forbidden: ${error.message}` })
   }
 }
+
+// const verifyToken = async (req: any, res: Response, next: NextFunction) => {
+//   next()
+// }
 
 export { verifyToken }
