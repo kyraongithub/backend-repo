@@ -1,11 +1,5 @@
-import { Application, Router } from 'express'
-import { routerUser } from './user'
-import { routerAuth } from './auth'
-
-const _routes: [string, Router][] = [
-  ['/users', routerUser],
-  ['/auth', routerAuth]
-]
+import { Application } from 'express'
+import { _routes } from './constant'
 
 export const routes = (app: Application) => {
   _routes.forEach((route) => {

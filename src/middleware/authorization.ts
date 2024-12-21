@@ -1,15 +1,22 @@
 import { NextFunction, Response } from 'express'
-import jwt from 'jsonwebtoken'
+import { auth } from '../config/firebase.config'
 
-const verifyToken = (req: any, res: Response, next: NextFunction) => {
+const verifyToken = async (req: any, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization
   const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) return res.status(401).json({ status: false, statusCode: 403, message: 'unauthorized' })
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err: any, user: any) => {
-    if (err) return res.status(403).json({ status: false, statusCode: 403, message: err.message })
-    req.user = user
+
+  if (token == null) {
+    return res.status(401).json({ status: false, statusCode: 401, message: 'Unauthorized' })
+  }
+
+  try {
+    const decodedToken = await auth.verifyIdToken(token)
+    req.user = decodedToken
     next()
-  })
+  } catch (error) {
+    console.error('Error verifying token:', error)
+    return res.status(403).json({ status: false, statusCode: 403, message: 'Forbidden' })
+  }
 }
 
 export { verifyToken }

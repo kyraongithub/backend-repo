@@ -13,6 +13,7 @@ const FetchUserData = async (): Promise<User[] | null> => {
       users.push({
         id: doc.id,
         name: userData.name,
+        email: userData.email,
         username: userData.username,
         created_at: userData.created_at
       } as User)
@@ -31,6 +32,7 @@ const CreateUserData = async (userData: User): Promise<User> => {
     return {
       id: userDoc.id,
       name: userData.name,
+      email: userData.email,
       username: userData.username,
       created_at: userData.created_at
     } as User
@@ -48,6 +50,7 @@ const UpdateUserData = async (userId: string, updatedData: Partial<User>): Promi
     return {
       id: userId,
       name: updatedUserData.name,
+      email: updatedUserData.email,
       username: updatedUserData.username,
       created_at: updatedUserData.created_at
     } as User
