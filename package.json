@@ -12,7 +12,8 @@
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "prepare": "husky install",
     "prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "firebase": "firebase emulators:start"
   },
   "keywords": [],
   "author": "",

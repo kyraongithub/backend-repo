@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin'
 
-const serviceAccount: any = require('./firebase.json')
+const serviceAccount: any = require('../../firebase.key.json')
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 })
@@ -8,4 +8,4 @@ admin.initializeApp({
 const db = admin.firestore()
 const auth = admin.auth()
 
-export { admin, db, auth }
+export { db, auth }
